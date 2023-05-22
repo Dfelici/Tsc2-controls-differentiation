@@ -1,0 +1,8 @@
+library(tRanslatome)
+x<-read_excel("DESeq2normalizedcountsfortRanslatome.xlsx")
+df<-data.frame(x,row.names=1)
+df2<-data.matrix(df)
+PPTE<-newTranslatomeDataset(df2, c("WTWT...2", "WTWT...3", "WTWT...4", "WTWT...5"), c("WTWT...6", "WTWT...7", "WTWT...8", "WTWT...9"), c("MUTMUT...10", "MUTMUT...11", "MUTMUT...12", "MUTMUT...13"), c("MUTMUT...14", "MUTMUT...15", "MUTMUT...16", "MUTMUT...17"), data.type="ngs", label.level=c("transcriptome","translatome"), label.condition=c("WTWT","MUTMUT"))
+PPTEDEG<-computeDEGs(PPTE, method="TE", significance.threshold=0.05, FC.threshold=0,log.transformed=FALSE, mult.cor=TRUE)
+HistPPTE<-Histogram(PPTEDEG, plottype ="detailed", outputformat="on screen")
+ScatterPPTE<-Scatterplot(PPTEDEG, outputformat="on screen",track="")
