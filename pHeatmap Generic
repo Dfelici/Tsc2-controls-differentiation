@@ -1,0 +1,14 @@
+getwd()
+setwd("File location")
+read.csv("File name")
+myHeatmap<-read.csv("File name.csv")
+rownames(myHeatmap)<-myHeatmap$Gene
+myHeatmap1<-myHeatmap[, column number start:column number end]
+library(pheatmap)
+pheatmap(myHeatmap1)
+heatmap_log2<-log2(myHeatmap1)
+pheatmap(heatmap_log2)
+summary(heatmap_log2)
+heatmap_log2(heatmap_log2=-Inf]<- low value
+pheatmap(heatmap_log2)
+pheatmap(heatmap_log2, scale="row")
